@@ -83,6 +83,7 @@ export default {
         }
     },
     mounted() {
+        //axios.get('https://studious-happiness-w97gx9764x7cg67-3427.app.github.dev/users')
         axios.get('http://127.0.0.1:3427/users')
         .then ((response)=>{
             console.log(response.data)

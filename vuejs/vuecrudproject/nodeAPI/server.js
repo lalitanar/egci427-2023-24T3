@@ -10,6 +10,7 @@ User = require('./api/models/userListModel')
 bodyParser = require('body-parser')
 
 mongoose.Promise = global.Promise
+//mongoose.connect('mongodb+srv://egcidev:egci427WebProgramming@egcidb.zdw4uzc.mongodb.net/Userdb', function(error){
 mongoose.connect('mongodb://localhost/Userdb', function(error){
     if(error) throw error
     console.log('Successfully connected');
