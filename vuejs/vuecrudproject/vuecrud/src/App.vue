@@ -14,7 +14,8 @@ export default {
 
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/home">Home</RouterLink>
+        <RouterLink to="/users">Users</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>

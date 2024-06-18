@@ -28,15 +28,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="user_alias in Users" v-bind:key="user_alias.id">
+                <tr v-for="user_alias in filterUsers" v-bind:key="user_alias.id">
                     <td class="text-left">{{ user_alias.firstName }}</td>
                     <td class="text-left">{{ user_alias.lastName }}</td>
                     <td class="text-left">{{ user_alias.email }}</td>
                     <td class="text-left">
-                        <!-- <router-link :to="{ path: 'userupdate', name: 'UpdateUser', params:{userId: user_alias._id} }">
+                        <router-link :to="{ path: 'userupdate', name: 'UpdateUser', params:{userId: user_alias._id} }">
                           <button class="btn btn-xs btn-warning">Edit</button>&nbsp;
                         </router-link>   
-                        <router-link to="/users">
+                        <!-- <router-link to="/users">
                           <button class="btn btn-xs btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm" @click="DELETE(user_alias._id)"><span class="glyphicon glyphicon-trash">Delete</span></button>
                         </router-link> -->
                     </td>
@@ -83,12 +83,20 @@ export default {
         }
     },
     mounted() {
+      
         //axios.get('https://studious-happiness-w97gx9764x7cg67-3427.app.github.dev/users')
         axios.get('http://127.0.0.1:3427/users')
         .then ((response)=>{
             console.log(response.data)
             this.Users = response.data
         })
+    },
+    computed : {
+      filterUsers: function(){
+        return this.Users.filter((user)=> {
+          return user.firstName.match(this.search)
+        })
+      }
     }
 }
 </script>
