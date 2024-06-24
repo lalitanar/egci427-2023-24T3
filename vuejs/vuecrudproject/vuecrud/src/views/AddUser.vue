@@ -41,7 +41,6 @@ export default {
     },
     methods: {
         addUser() {
-            //axios.post('https://studious-happiness-w97gx9764x7cg67-3427.app.github.dev/users', this.User)
             axios.post('http://127.0.0.1:3427/users', this.User)
               .then ((response) => {
                 console.log(response)

@@ -36,9 +36,9 @@
                         <router-link :to="{ path: 'userupdate', name: 'UpdateUser', params:{userId: user_alias._id} }">
                           <button class="btn btn-xs btn-warning">Edit</button>&nbsp;
                         </router-link>   
-                        <!-- <router-link to="/users">
-                          <button class="btn btn-xs btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm" @click="DELETE(user_alias._id)"><span class="glyphicon glyphicon-trash">Delete</span></button>
-                        </router-link> -->
+                        <router-link to="/users">
+                          <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal" @click="showDelPopup(user_alias._id)"><span class="glyphicon glyphicon-trash">Delete</span></button>
+                        </router-link>
                     </td>
                 </tr>
             </tbody>
@@ -47,7 +47,8 @@
             <button class="btn btn-large btn-block btn-success full-width">Add User</button>
         </router-link>
         <br>
-    <!-- <div class="modal fade bd-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal fade bd-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -61,12 +62,12 @@
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <router-link to="/users">
-                 <button type="button" class="btn btn-danger" @click="delUser(uid)">Delete</button>
+                 <button type="button" class="btn btn-danger" @click="DELETE(uid)">Delete</button>
               </router-link>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     </div>
   </template>
 
@@ -83,8 +84,6 @@ export default {
         }
     },
     mounted() {
-      
-        //axios.get('https://studious-happiness-w97gx9764x7cg67-3427.app.github.dev/users')
         axios.get('http://127.0.0.1:3427/users')
         .then ((response)=>{
             console.log(response.data)
@@ -96,6 +95,24 @@ export default {
         return this.Users.filter((user)=> {
           return user.firstName.match(this.search)
         })
+      }
+    },
+    methods: {
+      showDelPopup(id) {
+        this.uid = id
+        console.log("User ID: "+id)
+      },
+      DELETE(id) {
+        
+        var url = 'http://127.0.0.1:3427/users/'+this.uid
+        axios.delete(url)
+          .then (()=>{
+            console.log('Delete user id: '+this.uid)
+          })
+          .catch((error) => {
+                    console.log(error)
+          })
+          window.location.reload()
       }
     }
 }

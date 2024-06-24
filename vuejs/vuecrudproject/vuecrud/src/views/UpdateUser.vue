@@ -41,7 +41,6 @@ export default {
     },
     methods: {
         updateUser() {
-            //axios.post('https://studious-happiness-w97gx9764x7cg67-3427.app.github.dev/users/'+this.$route.params.userId, this.User)
             axios.post('http://127.0.0.1:3427/users/'+this.$route.params.userId, this.User)
               .then ((response) => {
                 console.log(response)
@@ -52,7 +51,6 @@ export default {
         }
     },
     mounted(){
-        //axios.get('https://studious-happiness-w97gx9764x7cg67-3427.app.github.dev/users/'+this.$route.params.userId)
         axios.get('http://127.0.0.1:3427/users/'+this.$route.params.userId)
         .then ((response) => {
                 this.User = response.data
