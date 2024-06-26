@@ -18,13 +18,7 @@ let auth
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDzjDDKVDqTT_0Ql613NN-O5YQGjuD2h-g",
-  authDomain: "egci427lab.firebaseapp.com",
-  databaseURL: "https://egci427lab.firebaseio.com",
-  projectId: "egci427lab",
-  storageBucket: "egci427lab.appspot.com",
-  messagingSenderId: "734903128173",
-  appId: "1:734903128173:web:9f17007bb679c91d8d6f64"
+
 };
 
 // Initialize Firebase
