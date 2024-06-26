@@ -1,38 +1,20 @@
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="50" height="50" />
     <div class="wrapper">
       <nav>
-        <RouterLink to="/home">Home</RouterLink>
-        <RouterLink to="/users">Users</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Home</RouterLink>
       </nav>
-      <button class="btn btn-success full-width" @click="logout">Logout</button>
     </div>
   </header>
-
   <RouterView />
 </template>
-<script>
-import {  getAuth, signOut} from "firebase/auth"
+
+<script setup>
 import { RouterLink, RouterView } from 'vue-router'
-export default {
-  name: 'App',
-  methods: {
-    logout () {
-      const auth = getAuth()
-      signOut(auth) 
-        .then (()=> {
-          this.$router.replace('/signin')
-        })
-        .catch((error)=> {
-          alert(error.message)     
-        })
-    }
-  }
-}
+
 </script>
+
 <style scoped>
 header {
   line-height: 1.5;
